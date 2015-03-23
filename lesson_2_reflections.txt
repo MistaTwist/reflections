@@ -1,3 +1,38 @@
 What happens when you initialize a repository? Why do you need to do it?
 
 	It creates the hidden .git folder.
+
+How is the staging area different from the working directory and the repository? What value do you think it offers?
+
+	It's a temporary area, in which files to be updated at once can go, then a single commit can be run.
+
+	Use git diff with no arguments to show changes that aren't in the staging area yet, ie unadded.
+
+	Use git diff --staged to see changes in staging that are not in the most recent commit.
+
+	working directory
+	staging area - git add to puts things here ready for commits.
+	repo - where things are after commit.
+
+	git reset -- hard in either the staging area or the working directory. BE CAREFUL WITH THIS.
+	
+How an you use the staging area to make sure you have one commit per logical change?
+
+	you can add one file change at a time using the git add command.
+
+	git allows labelling for commit - aka branches.
+
+		main branch: master.
+
+	git branch gives us the currently checked out branch. In a single-branched 
+	git branch [branch-name]
+	git checkout [branch-name]
+
+What are some situations when branches would be helpful in keeping your history organized? How would branches help?
+
+	You could create branches for work done by week or month if you wanted a history than the results of a git status.
+
+
+
+combining two branches is called a merge.
+
