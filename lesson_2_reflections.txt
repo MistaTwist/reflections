@@ -20,19 +20,82 @@ How an you use the staging area to make sure you have one commit per logical cha
 
 	you can add one file change at a time using the git add command.
 
-	git allows labelling for commit - aka branches.
+git allows labelling for commit - aka branches.
 
-		main branch: master.
+	main branch: master.
 
-	git branch gives us the currently checked out branch. In a single-branched 
-	git branch [branch-name]
-	git checkout [branch-name]
+git branch gives us the currently checked out branch.
+
+git branch [branch-name]
+git checkout [branch-name]
+
+combine the two above commands to:
+
+git checkout -b [branch-name]
 
 What are some situations when branches would be helpful in keeping your history organized? How would branches help?
 
 	You could create branches for work done by week or month if you wanted a history than the results of a git status.
-
+	Different piece of functionality/bug fix.
+	Master branch is the one that always works, so experimental and dev branches are common.
 
 
 combining two branches is called a merge.
 
+git log --graph --oneline master coins <-- Two branches, "master" and "coins" get shown in a time line.
+
+output:
+
+*82e24d9 Added the delay before bullet of 10 on ln 423.
+*3884eab Add color
+*3e42136 now using requestAnimationFrame
+*4035769 frame interval was set wrong after game was paused
+*25ede83 a couple missing ends with the ipad version
+*df03538 I can't spell 'screen' apparently :)
+* 354dfdd Make ships able to spawn on coins
+* 0c6daf1 Make it possible to collect coins
+* a3c0ae4 Create helper functions
+* 656b02e First pass at adding coins
+
+*b0678b1 Revert controls
+*f19cb1b Fix typo in space
+*75928a9 Use space for movement and enter for shooting
+*ac83b72 mostly finished ipad version
+*7ca4826 trying to get div touch controls to work
+*3cb406e first pass at ipad controls
+*fe7993e now capturing down key so people don't accidently scroll the page
+*343935f added license
+*80f3bc7 increased canvas size
+*7dc3de0 made the framerate counter dumb but more accurate
+*f077ea3 added pointInPolygon method for moz
+*5cb7bed added reverseTransform method
+a53b00a trying to get ff collision detection working
+
+How do the diagrams help you visualize the branch structure?
+	
+	Tracks commits and reachability.
+
+To merge 2 branches:
+
+merge a branch into master:
+	
+	First, checkout the branch you want to merge into.
+
+	git checkout master
+
+	git merge master [branch-name] - commits are ordered by timestamp.
+
+	git show commit_id1 commit_id2
+
+	git branch -d coins - deletes the branch label, not the commits.
+
+
+What is the result of merging two branches together? Why do we represent it in the diagram the way we do?
+
+	The commits are added, and the label of the non-"into" branch is removed, leaving one "timeline", labelled as the master or brnach into which we made the merge. Phew!
+
+	It's good to diagram it, but at times even I find it confusing, and I did a lot of diagrams at uni in my maths degree.
+
+A useful one to know is how to back out of a merge if you've started it in the wrong place:
+
+	git merge --abort
